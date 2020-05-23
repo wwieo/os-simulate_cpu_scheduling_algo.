@@ -3,4 +3,4 @@
 python app.py
 ```
 
-![](source/introduce.png)
+![](data/introduce.png)
