@@ -1,10 +1,10 @@
 import json
 from model import Queue, Process
 
-
 class ori_data():
+
     def queue():
-        with open('test_data.json' , 'r') as reader:
+        with open("test_data.json", 'r') as reader:
             ori_json = json.loads(reader.read())
         queue_ori = ori_json["queue"]
         queue_list = []
@@ -17,14 +17,18 @@ class ori_data():
         return queue_list
 
     def process():
-        with open('test_data.json' , 'r') as reader:
+        with open("test_data.json", 'r') as reader:
             ori_json = json.loads(reader.read())
         process_ori = ori_json["process"]
-        process_list = []
-
+        process_queue = []
+        x = 1
         for i in range(0, len(process_ori)):
+            process_list = []
             for q in range(0, len(process_ori[i])):
                 p = process_ori[i][q]
-                process = Process(qid=i+1, pid=q+1,
-                                  priority=p["priority"], time=p["time"])
-        return process_list
+                process = Process(pid=x, priority=p["priority"], export=False,
+                                  time=p["time"], run_times=0, status=("PID:"+str(x)+"  "))
+                process_list.append(process)
+                x+=1
+            process_queue.append(process_list)
+        return process_queue

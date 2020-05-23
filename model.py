@@ -8,9 +8,11 @@ class Queue(object):
         self.time_quantum = time_quantum
 
 class Process(object):
-    def __init__(self, qid:int, pid:int,
-                 priority:int, time:int) -> None:
-        self.qid = qid
+    def __init__(self, pid:int, priority:int, export: bool,
+                 time:int, run_times:int, status:str) -> None:
         self.pid = pid
         self.priority = priority
+        self.export = export
         self.time = time
+        self.run_times = run_times
+        self.status = status
